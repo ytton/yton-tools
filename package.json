@@ -1,16 +1,18 @@
 {
   "name": "@ytton/tools",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1",
   "type": "module",
+  "main": "index.ts",
+  "types": "index.d.ts",
   "files": [
+    "index.d.ts",
     "dist"
   ],
-  "main": "./dist/yton-tools.umd.cjs",
-  "module": "./dist/yton-tools.js",
   "exports": {
     ".": {
       "import": "./dist/yton-tools.js",
-      "require": "./dist/yton-tools.umd.cjs"
+      "require": "./dist/yton-tools.cjs",
+      "default": "./dist/yton-tools.js"
     }
   },
   "scripts": {

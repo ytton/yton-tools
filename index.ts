@@ -1,2 +1,2 @@
-export { sum } from '@yton-tools/math';
-export { request } from '@yton-tools/request';
+export { sum } from './packages/math';
+export { request } from './packages/request';
