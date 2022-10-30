@@ -1,13 +1,17 @@
 {
-  "name": "math",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@ytton/math",
+  "version": "0.0.1-alpha.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "types": "./index.d.ts"
+  "keywords": ["test"],
+  "author": "ytton",
+  "license": "MIT",
+  "types": "./index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "description": ""
 }
