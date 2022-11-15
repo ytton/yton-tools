@@ -1,9 +1,9 @@
 import defaultConfig from './defaultConfig';
 
-export function handleMessage(errorPromise, extra) {
+export function handleMessage(errorPromise: any, extra: any) {
   const { needMessage, message, returnType } = extra;
   return new Promise((res, rej) => {
-    errorPromise.then(res, error => {
+    errorPromise.then(res, (error: any) => {
       let msg = '';
       if (typeof error === 'string') {
         msg = error;
@@ -18,13 +18,13 @@ export function handleMessage(errorPromise, extra) {
     });
   });
 }
-export function formatKey(key, isMethod) {
+export function formatKey(key: string, isMethod: boolean) {
   if (/^handle/.test(key)) {
     return `handle${isMethod ? 'Method' : ''}${key.replace('handle', '')}`;
   }
   return key;
 }
-export function handleConfig(config) {
+export function handleConfig(config: any) {
   config.extra = {};
   Object.keys(defaultConfig).forEach(extraKey => {
     if (extraKey in config) {
@@ -34,9 +34,9 @@ export function handleConfig(config) {
   });
   config.__isMethod && delete config.__isMethod;
 }
-export function handleInterceptors(instance) {
+export function handleInterceptors(instance: any) {
   instance.interceptors.request.use(
-    config => {
+    (config: any) => {
       const extra = { ...instance.defaults.extra, ...(config.extra ?? defaultConfig) };
       try {
         //全局统一处理请求
@@ -52,7 +52,7 @@ export function handleInterceptors(instance) {
         return handleMessage(extra.handleError(error, config), extra);
       }
     },
-    error => {
+    (error: any) => {
       const extra = error?.config?.extra;
       let errorPromise = extra ? extra.handleError(error) : Promise.reject(error);
       return handleMessage(errorPromise, extra);
@@ -60,7 +60,7 @@ export function handleInterceptors(instance) {
   );
 
   instance.interceptors.response.use(
-    response => {
+    (response: any) => {
       const extra = { ...instance.defaults.extra, ...(response.config.extra ?? defaultConfig) };
       try {
         //全局统一处理响应
@@ -77,16 +77,16 @@ export function handleInterceptors(instance) {
         return handleMessage(extra.handleError(error, response), extra);
       }
     },
-    error => {
+    (error: any) => {
       const extra = error?.config?.extra;
       let errorPromise = extra ? extra.handleError(error) : Promise.reject(error);
       return handleMessage(errorPromise, extra);
     }
   );
 }
-export function handleMethod(instance) {
+export function handleMethod(instance: any) {
   const _request = instance.request;
-  function request(configOrUrl, config) {
+  function request(configOrUrl: any, config: any) {
     if (typeof configOrUrl === 'string') {
       config = config || {};
       config.url = configOrUrl;
@@ -100,7 +100,7 @@ export function handleMethod(instance) {
   instance.request = request;
 
   ['delete', 'get', 'head', 'options'].forEach(function (method) {
-    instance[method] = function (url, config) {
+    instance[method] = function (url: any, config: any) {
       return this.request({
         ...(config || {}),
         ...{
@@ -114,7 +114,7 @@ export function handleMethod(instance) {
 
   ['post', 'put', 'patch'].forEach(function (method) {
     function generateHTTPMethod(isForm = false) {
-      return function httpMethod(url, data, config) {
+      return function httpMethod(url: any, data: any, config: any) {
         return instance.request({
           ...(config || {}),
           ...{

@@ -11,6 +11,8 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     o[k2] = m[k];
 }));
 exports.__esModule = true;
-exports.request = void 0;
-var request_1 = require("./core/request");
+exports.request = exports.sum = void 0;
+var math_1 = require("./packages/math");
+__createBinding(exports, math_1, "sum");
+var request_1 = require("./packages/request");
 __createBinding(exports, request_1, "request");
