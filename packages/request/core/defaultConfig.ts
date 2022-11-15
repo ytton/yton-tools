@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { YtRequestConfig, YtResponse } from '../types';
+import { YtRequestConfig, YtResponse } from '..';
 
 function handleAuth<D>(config: YtRequestConfig<D>) {
   return config;

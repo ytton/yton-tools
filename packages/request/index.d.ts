@@ -49,3 +49,5 @@ export interface Message {
   warning(message: string): void;
   error(message: string): void;
 }
+export declare const request:YtRequestStatic;
+export default request

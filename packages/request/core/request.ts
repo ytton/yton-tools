@@ -1,7 +1,7 @@
 import axios from 'axios';
 import defaultConfig from './defaultConfig';
 import { handleConfig, handleInterceptors, handleMethod } from './handles';
-import { YtRequestConfig, YtRequestStatic, type YtRequestInstance } from '../types/';
+import { YtRequestConfig, YtRequestStatic, type YtRequestInstance } from '..';
 function createInstance(config: YtRequestConfig): YtRequestInstance {
   handleConfig(config);
   let instance = axios.create(config);
