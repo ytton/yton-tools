@@ -1,5 +1,4 @@
 import { AxiosError, AxiosResponseHeaders } from 'axios';
-import { CreateAxiosDefaults } from 'axios';
 import { RawAxiosResponseHeaders } from 'axios';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
@@ -50,4 +49,5 @@ export interface Message {
   error(message: string): void;
 }
 export declare const request:YtRequestStatic;
-export default request
+export function sum(a: number, b: number): number;
+export function times(a: number, b: number): number;
